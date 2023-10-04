@@ -114,6 +114,37 @@ class SinglyLinkedList<T>
     }
 
     /**
+     * Insert at kth postition from beginning.
+     *
+     * @param pos position to insert at.
+     * @param newNode new node to be inserted.
+     */
+    public void insertAtKthPositionFromBeginning(int pos, SLLNode newNode)
+    {
+        if (pos > count || pos < 0)
+        {
+            System.out.println("Incorrect position");
+        }
+        else {
+            if(pos == 0) {
+                newNode.setNext(head);
+                head = newNode;
+            }
+            else {
+                int currPosition = 0;
+                SLLNode curr;
+                curr = head;
+                while (currPosition < pos -1) {
+                    curr = curr.getNext();
+                    currPosition++;
+                }
+                newNode.setNext(curr.getNext());
+                curr.setNext(newNode);
+            }
+        }
+    }
+
+    /**
      * main function.
      * @param args arguments if any.
      */
@@ -126,7 +157,8 @@ class SinglyLinkedList<T>
         sll.insertAtBeginning(new SLLNode<>(2));
         System.out.println(sll);
         System.out.println("Total Nodes: "+ sll.getTotalNodes());
-        sll.clearList();
+        //sll.clearList();
+        sll.insertAtKthPositionFromBeginning(2,new SLLNode<>(99));
         System.out.println(sll);;
     }
 
