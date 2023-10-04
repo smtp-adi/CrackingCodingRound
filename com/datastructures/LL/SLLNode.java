@@ -1,7 +1,19 @@
 package com.com.datastructures.LL;
+
+/**
+ * Node structure class for SLL.
+ * @param <T>
+ */
 public class SLLNode<T>
 {
+    /**
+     * data.
+     */
     private T data;
+
+    /**
+     * reference to next node.
+     */
     private SLLNode next;
 
     public SLLNode(T data)
