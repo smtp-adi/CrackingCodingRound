@@ -121,17 +121,18 @@ class SinglyLinkedList<T>
      */
     public void insertAtKthPositionFromBeginning(int pos, SLLNode newNode)
     {
-        if (pos > count || pos < 0)
+        //assuming first element is at pos 0.
+        if (pos > count || pos < 1)
         {
             System.out.println("Incorrect position");
         }
         else {
-            if(pos == 0) {
+            if(pos == 1) {
                 newNode.setNext(head);
                 head = newNode;
             }
             else {
-                int currPosition = 0;
+                int currPosition = 1;
                 SLLNode curr;
                 curr = head;
                 while (currPosition < pos -1) {
@@ -142,6 +143,18 @@ class SinglyLinkedList<T>
                 curr.setNext(newNode);
             }
         }
+    }
+
+    /**
+     * Insert at Kth position from end.
+     *
+     * @param pos position from end.
+     * @param newNode new node to be inserted.
+     */
+    public void insertAtKthPositionFromEnd(int pos,SLLNode newNode)
+    {
+        //kth position from end means (n-k+1)th pos from beginning.
+        //where n is total nodes.
     }
 
     /**
