@@ -43,7 +43,7 @@ class SinglyLinkedList<T>
             SLLNode<T> curr, temp;
             for (curr = head; curr.getNext() != null; curr = curr.getNext()) ;
             curr.setNext(newNode);
-            count++;
+            this.count++;
 
             //While loop works as well.
             /*SLLNode<T> curr = head;
@@ -130,6 +130,7 @@ class SinglyLinkedList<T>
             if(pos == 1) {
                 newNode.setNext(head);
                 head = newNode;
+                this.count++;
             }
             else {
                 int currPosition = 1;
@@ -141,6 +142,7 @@ class SinglyLinkedList<T>
                 }
                 newNode.setNext(curr.getNext());
                 curr.setNext(newNode);
+                this.count++;
             }
         }
     }
@@ -155,6 +157,15 @@ class SinglyLinkedList<T>
     {
         //kth position from end means (n-k+1)th pos from beginning.
         //where n is total nodes.
+        int counter = 1;
+        int posFromEnd = this.count - pos;
+        SLLNode curr = this.head;
+        while (counter!= posFromEnd+1) {
+            curr = curr.getNext();
+            counter++;
+        }
+        newNode.setNext(curr.getNext());
+        curr.setNext(newNode);
     }
 
     /**
@@ -172,6 +183,9 @@ class SinglyLinkedList<T>
         System.out.println("Total Nodes: "+ sll.getTotalNodes());
         //sll.clearList();
         sll.insertAtKthPositionFromBeginning(2,new SLLNode<>(99));
+        System.out.println(sll);
+        System.out.println(sll.count);
+        sll.insertAtKthPositionFromEnd(1,new SLLNode<>(98));
         System.out.println(sll);;
     }
 
